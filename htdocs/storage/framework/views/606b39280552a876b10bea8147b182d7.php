@@ -1,0 +1,1 @@
+<img src="<?php echo e(url('arsip/logo-simang.png')); ?>" <?php echo e($attributes->merge(['class' => 'h-12 w-auto'])); ?> alt="Logo SIMANG"><?php /**PATH /home/vol3_6/infinityfree.com/if0_40994811/htdocs/resources/views/components/application-logo.blade.php ENDPATH**/ ?>

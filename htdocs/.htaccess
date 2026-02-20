@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # --- BAGIAN PENTING: JEBAKAN BETMEN ---
+    # Kalau ada yang minta ke folder /storage, JANGAN KASIH MASUK FOLDERNYA.
+    # Oper langsung ke index.php biar Laravel yang urus.
+    RewriteCond %{REQUEST_URI} ^/storage/ [NC]
+    RewriteRule ^storage/(.*)$ index.php [L,QSA]
+    # --------------------------------------
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

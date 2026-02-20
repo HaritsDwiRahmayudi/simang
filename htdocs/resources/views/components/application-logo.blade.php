@@ -1,0 +1,1 @@
+<img src="{{ url('arsip/logo-simang.png') }}" {{ $attributes->merge(['class' => 'h-12 w-auto']) }} alt="Logo SIMANG">
